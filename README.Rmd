@@ -2,6 +2,8 @@
 output: github_document
 ---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -14,11 +16,13 @@ knitr::opts_chunk$set(
 # guaguas
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
+[![Travis build status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
 <!-- badges: end -->
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, según el Servicio de Registro Civil e Identificación. Incluye todos los nombres con al menos 15 ocurrencias.
 
-El dataframe `guaguas` contiene cuatro variables: año, sexo registral, nombre y número de ocurrencias del nombre.
+El dataframe `guaguas` contiene cuatro variables: año de inscripción, sexo registral, nombre, número de ocurrencias del nombre y proporción del nombre respecto del total de inscripciones del año.
 
 ## Instalación
 
@@ -28,22 +32,50 @@ devtools::install_github("rivaquiroga/guaguas")
 ```
 ## Ejemplos
 
-```{r example, eval = FALSE}
+```{r example, message = FALSE}
 library(guaguas)
 library(dplyr)
 library(ggplot2)
+library(stringr)
 
 
 guaguas %>% 
-  filter(nombre %in% c("Salvador")) %>% 
-  ggplot(aes(anio, n, color = nombre)) + geom_line()
+  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1968 & anio <= 1978) %>% 
+  ggplot(aes(anio, n, color = nombre)) + 
+  geom_line() +
+  scale_x_continuous(breaks = c(1968, 1970, 1972, 1974, 1976)) +
+  theme_minimal()
+  
+guaguas %>% 
+  filter(nombre == "Violeta") %>% 
+  ggplot(aes(anio, n, color = nombre)) + 
+  geom_line() +
+  theme_minimal()
+```
+
+El efecto de la teleserie "Romané" el año 2000:
+
+```{r  message = FALSE}
+guaguas %>% 
+  filter(str_detect(nombre, "(Y|J)ovanka"))
+```
+
+El efecto Britney Spears:
+```{r  message = FALSE}
+guaguas %>% 
+  filter(str_detect(nombre, "Britney")) 
 
 ```
 
 
+
 ## Etimología
 
-La palabra _guagua_ viene del quechua _wawa_ y es la forma que en Chile y otros países de Sudamérica se utiliza para referirse a un/a bebé.
+La palabra _guagua_ viene del quechua _wawa_ y es la forma que en Chile y algunos países de Sudamérica se utiliza para referirse a un/a bebé.
+
+## Fuente de los datos
+
+Los datos fueron obtenidos a través del Portal de Transparencia del Sistema de Registro Civil e Identificación.
 
 ## Paquetes similares
 
