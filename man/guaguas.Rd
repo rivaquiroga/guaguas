@@ -5,12 +5,13 @@
 \alias{guaguas}
 \title{Nombres de bebés (guaguas)}
 \format{
-Un dataframe con 84565 filas y 4 variables
+Un dataframe con 84565 filas y 5 variables
 \describe{
-\item{anio}{Año}
+\item{anio}{Año de inscripción}
 \item{sexo}{Sexo registral}
 \item{nombre}{Nombre}
 \item{n}{Frecuencia del nombre ese año}
+\item{proporcion}{\code{n} dividido por el total de inscripciones de ese año}
 }
 }
 \source{
