@@ -1,0 +1,22 @@
+Package: guaguas
+Title: Nombres de bebés registrados en Chile entre 1920 y 2019
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Riva",
+           family = "Quiroga",
+           role = c("aut", "cre"),
+           email = "riva.quiroga@uc.cl",
+           comment = c(ORCID = "0000-0002-1147-4135"))
+Description: Datos de nombres de bebés registrados en Chile
+    entre 1920 y 2019, según el Servicio de Registro Civil
+    e Identificación. Incluye todos los nombres con al menos
+    15 ocurrencias.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Depends: 
+    R (>= 2.10)
+Imports:
+    tibble
