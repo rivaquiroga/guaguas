@@ -56,7 +56,6 @@ library(stringr)
 library(ggplot2)
 library(forcats)
 library(hrbrthemes)
-library(gt)
 
 guaguas %>% 
   filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
@@ -75,12 +74,7 @@ Según [IMDB](https://www.imdb.com/list/ls006742360/), [Romané](https://es.wiki
 
 ```{r  message = FALSE}
 guaguas %>% 
-  filter(str_detect(nombre, "(Y|J)ovanka")) %>% 
-  gt() %>% 
-    cols_label(
-    anio = "año",
-    proporcion = "proporción"
-  ) 
+  filter(str_detect(nombre, "(Y|J)ovanka"))
 ```
 
 También aumentaron las inscripciones de nombres de otros personajes de la teleserie:
@@ -119,7 +113,7 @@ guaguas %>%
 <img src="man/figures/por-que-me-llamo-brian.JPG" width="400">
 </p>
 
-<div align="center"> Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019 </br>Fuente de la imagen: <a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a></div>
+<p align="center">Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019 </br>Fuente de la imagen: <a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a></p>
 
 ## Fuente de los datos
 
