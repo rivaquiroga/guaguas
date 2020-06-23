@@ -19,6 +19,11 @@ El dataframe `guaguas` contiene cuatro variables: año de inscripción,
 sexo registral, nombre, número de ocurrencias del nombre y proporción
 del nombre respecto del total de inscripciones del año.
 
+Los datos contenidos en este paquete permiten explorar algunas
+tendencias en los nombres registrados en Chile durante el último siglo.
+Puede utilizarse también como dataset de práctica para enseñar/aprender
+R.
+
 ## Instalación
 
 ``` r
@@ -28,69 +33,665 @@ devtools::install_github("rivaquiroga/guaguas")
 
 ## Ejemplos
 
+A continuación se muestran algunos ejemplos de exploración de estos
+datos.
+
+### El contexto político en los años sesenta y setenta
+
+Los dos momentos en que aumentan las inscripciones con el nombre
+*Salvador* en los años sesenta y setenta coinciden con elecciones
+presidenciales en las que se presentó Salvador Allende como candidato
+(1964, 1970). El año siguiente de su elección como presidente (1971) es
+el año con mayor cantidad de inscripciones en esas décadas. Luego del
+Golpe Militar los registros comienzan a bajar y encuentran su punto más
+bajo en 1978. El nombre *Augusto*, por su parte, sube en los registros
+en 1973 y 1974, pero luego vuelve a bajar.
+
 ``` r
 library(guaguas)
 library(dplyr)
-library(ggplot2)
 library(stringr)
-
+library(ggplot2)
+library(forcats)
+library(hrbrthemes)
+library(gt)
 
 guaguas %>% 
-  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1968 & anio <= 1978) %>% 
+  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
+  ggplot(aes(anio, n, color = fct_reorder2(nombre, n, anio))) + 
+  geom_line() +
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  theme_ipsum()
+```
+
+<img src="man/figures/salvador-augusto.png">
+
+### El efecto “Romané” en el año 2000
+
+Según [IMDB](https://www.imdb.com/list/ls006742360/),
+[Romané](https://es.wikipedia.org/wiki/Roman%C3%A9) ha sido una de las
+teleseries más vistas en Chile. Emitida el año 2000, el nombre de su
+protagonista reaparece en la lista de inscritas con más de 15
+ocurrencias ese año.
+
+``` r
+guaguas %>% 
+  filter(str_detect(nombre, "(Y|J)ovanka")) %>% 
+  gt() %>% 
+    cols_label(
+    anio = "año",
+    proporcion = "proporción"
+  ) %>% 
+  tab_options(
+    table.background.color = "#b2d8d8"
+  ) %>%
+  cols_width(
+    everything() ~ px(150)
+  ) %>% 
+  cols_align(
+    align = "center",
+    columns = vars(anio, sexo, nombre, proporcion)
+  )
+```
+
+<!--html_preserve-->
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#plkcfygygw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  background-color: #b2d8d8;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_heading {
+  background-color: #b2d8d8;
+  text-align: center;
+  border-bottom-color: #b2d8d8;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #b2d8d8;
+  border-bottom-width: 0;
+}
+
+#plkcfygygw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #b2d8d8;
+  border-top-width: 0;
+}
+
+#plkcfygygw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_col_heading {
+  color: #333333;
+  background-color: #b2d8d8;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#plkcfygygw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #b2d8d8;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#plkcfygygw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#plkcfygygw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#plkcfygygw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#plkcfygygw .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #b2d8d8;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#plkcfygygw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #b2d8d8;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#plkcfygygw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#plkcfygygw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#plkcfygygw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#plkcfygygw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#plkcfygygw .gt_stub {
+  color: #333333;
+  background-color: #b2d8d8;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#plkcfygygw .gt_summary_row {
+  color: #333333;
+  background-color: #b2d8d8;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#plkcfygygw .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #b2d8d8;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#plkcfygygw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_footnotes {
+  color: #333333;
+  background-color: #b2d8d8;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#plkcfygygw .gt_sourcenotes {
+  color: #333333;
+  background-color: #b2d8d8;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#plkcfygygw .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#plkcfygygw .gt_left {
+  text-align: left;
+}
+
+#plkcfygygw .gt_center {
+  text-align: center;
+}
+
+#plkcfygygw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#plkcfygygw .gt_font_normal {
+  font-weight: normal;
+}
+
+#plkcfygygw .gt_font_bold {
+  font-weight: bold;
+}
+
+#plkcfygygw .gt_font_italic {
+  font-style: italic;
+}
+
+#plkcfygygw .gt_super {
+  font-size: 65%;
+}
+
+#plkcfygygw .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+
+<div id="plkcfygygw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+
+<table class="gt_table" style="table-layout: fixed; width: 750px">
+
+<colgroup>
+
+<col style="width: 150px"/>
+
+<col style="width: 150px"/>
+
+<col style="width: 150px"/>
+
+<col style="width: 150px"/>
+
+<col style="width: 150px"/>
+
+</colgroup>
+
+<thead class="gt_col_headings">
+
+<tr>
+
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+
+año
+
+</th>
+
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+
+sexo
+
+</th>
+
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+
+nombre
+
+</th>
+
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+
+n
+
+</th>
+
+<th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
+
+proporción
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody class="gt_table_body">
+
+<tr>
+
+<td class="gt_row gt_center">
+
+1963
+
+</td>
+
+<td class="gt_row gt_center">
+
+F
+
+</td>
+
+<td class="gt_row gt_center">
+
+Jovanka
+
+</td>
+
+<td class="gt_row gt_center">
+
+17
+
+</td>
+
+<td class="gt_row gt_center">
+
+0.00005966
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+1973
+
+</td>
+
+<td class="gt_row gt_center">
+
+F
+
+</td>
+
+<td class="gt_row gt_center">
+
+Yovanka
+
+</td>
+
+<td class="gt_row gt_center">
+
+16
+
+</td>
+
+<td class="gt_row gt_center">
+
+0.00005062
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+2000
+
+</td>
+
+<td class="gt_row gt_center">
+
+F
+
+</td>
+
+<td class="gt_row gt_center">
+
+Jovanka
+
+</td>
+
+<td class="gt_row gt_center">
+
+30
+
+</td>
+
+<td class="gt_row gt_center">
+
+0.00011614
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+2000
+
+</td>
+
+<td class="gt_row gt_center">
+
+F
+
+</td>
+
+<td class="gt_row gt_center">
+
+Yovanka
+
+</td>
+
+<td class="gt_row gt_center">
+
+21
+
+</td>
+
+<td class="gt_row gt_center">
+
+0.00008130
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!--/html_preserve-->
+
+También aumentaron las inscripciones de nombres de otros personajes de
+la teleserie:
+
+``` r
+guaguas %>% 
+  filter(nombre %in% c("Milenka", "Branco", "Salomé"), anio > 1980) %>% 
   ggplot(aes(anio, n, color = nombre)) + 
   geom_line() +
-  scale_x_continuous(breaks = c(1968, 1970, 1972, 1974, 1976)) +
-  theme_minimal()
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones") +
+  theme_ipsum()
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/romane.png">
+
+### Ídolos musicales
+
+Alguno de los nombres de integrantes de los [Backstreet
+Boys](https://es.wikipedia.org/wiki/Backstreet_Boys) aumentaron hacia
+fines de la década de los noventa. Como suele ocurrir con nombres en
+inglés, es posible encontrar variaciones en la forma de escribirlos:
+*Brian*, *Bryan*, *Brayan*.
 
 ``` r
-  
 guaguas %>% 
-  filter(nombre == "Violeta") %>% 
-  ggplot(aes(anio, n, color = nombre)) + 
+  filter(nombre %in% c("Brian", "Kevin", "Bryan", "Brayan")) %>% 
+  ggplot(aes(anio, n, color = fct_reorder2(nombre, anio, n))) +
   geom_line() +
-  theme_minimal()
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  theme_ipsum()
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="man/figures/bsb.png">
 
-El efecto de la teleserie “Romané” el año 2000:
+<p align="center">
 
-``` r
-guaguas %>% 
-  filter(str_detect(nombre, "(Y|J)ovanka"))
-#> # A tibble: 4 x 5
-#>    anio sexo  nombre      n proporcion
-#>   <dbl> <chr> <chr>   <int>      <dbl>
-#> 1  1963 F     Jovanka    17  0.0000597
-#> 2  1973 F     Yovanka    16  0.0000506
-#> 3  2000 F     Jovanka    30  0.000116 
-#> 4  2000 F     Yovanka    21  0.0000813
-```
+<img src="man/figures/por-que-me-llamo-brian.JPG" width="400">
 
-El efecto Britney Spears:
+</p>
 
-``` r
-guaguas %>% 
-  filter(str_detect(nombre, "Britney")) 
-#> # A tibble: 2 x 5
-#>    anio sexo  nombre      n proporcion
-#>   <dbl> <chr> <chr>   <int>      <dbl>
-#> 1  2000 F     Britney    21  0.0000813
-#> 2  2008 F     Britney    19  0.0000739
-```
+<center>
+
+Un cartel visto durante la presentación de los Backstreet Boys en el
+Festival de Viña del Mar 2019 </br>(Fuente de la imagen
+[FMTiempo](https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/))
+
+</center>
+
+## Fuente de los datos
+
+Los datos fueron obtenidos a través del Portal de Transparencia del
+Sistema de Registro Civil e Identificación de Chile.
 
 ## Etimología
 
 La palabra *guagua* viene del quechua *wawa* y es la forma que en Chile
 y algunos países de Sudamérica se utiliza para referirse a un/a bebé.
-
-## Fuente de los datos
-
-Los datos fueron obtenidos a través del Portal de Transparencia del
-Sistema de Registro Civil e Identificación.
 
 ## Paquetes similares
 

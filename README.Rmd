@@ -7,9 +7,7 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
@@ -24,6 +22,8 @@ Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, seg
 
 El dataframe `guaguas` contiene cuatro variables: año de inscripción, sexo registral, nombre, número de ocurrencias del nombre y proporción del nombre respecto del total de inscripciones del año.
 
+Los datos contenidos en este paquete permiten explorar algunas tendencias en los nombres registrados en Chile durante el último siglo. Puede utilizarse también como dataset de práctica para enseñar/aprender R. 
+
 ## Instalación
 
 ``` r
@@ -31,51 +31,113 @@ El dataframe `guaguas` contiene cuatro variables: año de inscripción, sexo reg
 devtools::install_github("rivaquiroga/guaguas")
 ```
 ## Ejemplos
+A continuación se muestran algunos ejemplos de exploración de estos datos. 
 
-```{r example, message = FALSE}
+
+```{r echo=FALSE, message=FALSE}
 library(guaguas)
 library(dplyr)
 library(ggplot2)
 library(stringr)
-
-
-guaguas %>% 
-  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1968 & anio <= 1978) %>% 
-  ggplot(aes(anio, n, color = nombre)) + 
-  geom_line() +
-  scale_x_continuous(breaks = c(1968, 1970, 1972, 1974, 1976)) +
-  theme_minimal()
-  
-guaguas %>% 
-  filter(nombre == "Violeta") %>% 
-  ggplot(aes(anio, n, color = nombre)) + 
-  geom_line() +
-  theme_minimal()
+library(gt)
+library(hrbrthemes)
+library(forcats)
 ```
 
-El efecto de la teleserie "Romané" el año 2000:
+### El contexto político en los años sesenta y setenta
+Los dos momentos en que aumentan las inscripciones con el nombre _Salvador_ en los años sesenta y setenta coinciden con elecciones presidenciales en las que se presentó Salvador Allende como candidato (1964, 1970). El año siguiente de su elección como presidente (1971) es el año con mayor cantidad de inscripciones en esas décadas. Luego del Golpe Militar los registros comienzan a bajar y encuentran su punto más bajo en 1978. 
+El nombre _Augusto_, por su parte, sube en los registros en 1973 y 1974, pero luego vuelve a bajar.
+
+
+```{r eval = FALSE}
+library(guaguas)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(forcats)
+library(hrbrthemes)
+library(gt)
+
+guaguas %>% 
+  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
+  ggplot(aes(anio, n, color = fct_reorder2(nombre, n, anio))) + 
+  geom_line() +
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  theme_ipsum()
+
+```
+<img src="man/figures/salvador-augusto.png">
+
+
+### El efecto "Romané" en el año 2000
+Según [IMDB](https://www.imdb.com/list/ls006742360/), [Romané](https://es.wikipedia.org/wiki/Roman%C3%A9) ha sido una de las teleseries más vistas en Chile. Emitida el año 2000, el nombre de su protagonista reaparece en la lista de inscritas con más de 15 ocurrencias ese año.
 
 ```{r  message = FALSE}
 guaguas %>% 
-  filter(str_detect(nombre, "(Y|J)ovanka"))
+  filter(str_detect(nombre, "(Y|J)ovanka")) %>% 
+  gt() %>% 
+    cols_label(
+    anio = "año",
+    proporcion = "proporción"
+  ) %>% 
+  tab_options(
+    table.background.color = "#b2d8d8"
+  ) %>%
+  cols_width(
+    everything() ~ px(150)
+  ) %>% 
+  cols_align(
+    align = "center",
+    columns = vars(anio, sexo, nombre, proporcion)
+  )
 ```
 
-El efecto Britney Spears:
-```{r  message = FALSE}
+También aumentaron las inscripciones de nombres de otros personajes de la teleserie:
+
+```{r eval = FALSE}
 guaguas %>% 
-  filter(str_detect(nombre, "Britney")) 
+  filter(nombre %in% c("Milenka", "Branco", "Salomé"), anio > 1980) %>% 
+  ggplot(aes(anio, n, color = nombre)) + 
+  geom_line() +
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones") +
+  theme_ipsum()
+
 
 ```
+<img src="man/figures/romane.png">
 
 
+### Ídolos musicales
+Alguno de los nombres de integrantes de los [Backstreet Boys](https://es.wikipedia.org/wiki/Backstreet_Boys) aumentaron hacia fines de la década de los noventa. Como suele ocurrir con nombres en inglés, es posible encontrar variaciones en la forma de escribirlos: _Brian_, _Bryan_, _Brayan_.
+
+```{r  eval = FALSE}
+guaguas %>% 
+  filter(nombre %in% c("Brian", "Kevin", "Bryan", "Brayan")) %>% 
+  ggplot(aes(anio, n, color = fct_reorder2(nombre, anio, n))) +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  theme_ipsum()
+
+```
+<img src="man/figures/bsb.png">
+
+
+<p align="center">
+<img src="man/figures/por-que-me-llamo-brian.JPG" width="400">
+</p>
+
+<center> Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019 </br>(Fuente de la imagen [FMTiempo](https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/)) </center>
+
+## Fuente de los datos
+
+Los datos fueron obtenidos a través del Portal de Transparencia del Sistema de Registro Civil e Identificación de Chile.
 
 ## Etimología
 
 La palabra _guagua_ viene del quechua _wawa_ y es la forma que en Chile y algunos países de Sudamérica se utiliza para referirse a un/a bebé.
-
-## Fuente de los datos
-
-Los datos fueron obtenidos a través del Portal de Transparencia del Sistema de Registro Civil e Identificación.
 
 ## Paquetes similares
 
