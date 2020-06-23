@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
-[![Travis build
-status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
+
 <!-- badges: end -->
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y
@@ -67,7 +66,8 @@ guaguas %>%
   ggplot(aes(anio, n, color = fct_reorder2(nombre, n, anio))) + 
   geom_line() +
   scale_color_colorblind() +
-  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  labs(x = "año", y = "total inscripciones", color = "nombre", 
+       title = "Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979") +
   theme_ipsum()
 ```
 
@@ -102,7 +102,8 @@ guaguas %>%
   ggplot(aes(anio, n, color = nombre)) + 
   geom_line() +
   scale_color_colorblind() +
-  labs(x = "año", y = "total inscripciones") +
+  labs(x = "año", y = "total inscripciones",
+       title = "Inscripciones de nombres de personajes de 'Romané'") +
   theme_ipsum()
 ```
 
@@ -122,7 +123,8 @@ guaguas %>%
   ggplot(aes(anio, n, color = fct_reorder2(nombre, anio, n))) +
   geom_line() +
   scale_color_colorblind() +
-  labs(x = "año", y = "total inscripciones", color = "nombre") +
+  labs(x = "año", y = "total inscripciones", color = "nombre",
+       title = "El efecto 'Backstreet Boys'") +
   theme_ipsum()
 ```
 
