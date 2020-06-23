@@ -80,17 +80,7 @@ guaguas %>%
     cols_label(
     anio = "año",
     proporcion = "proporción"
-  ) %>% 
-  tab_options(
-    table.background.color = "#b2d8d8"
-  ) %>%
-  cols_width(
-    everything() ~ px(150)
-  ) %>% 
-  cols_align(
-    align = "center",
-    columns = vars(anio, sexo, nombre, proporcion)
-  )
+  ) 
 ```
 
 También aumentaron las inscripciones de nombres de otros personajes de la teleserie:
@@ -129,7 +119,7 @@ guaguas %>%
 <img src="man/figures/por-que-me-llamo-brian.JPG" width="400">
 </p>
 
-<center> Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019 </br>(Fuente de la imagen [FMTiempo](https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/)) </center>
+<div align="center"> Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019 </br>Fuente de la imagen: <a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a></div>
 
 ## Fuente de los datos
 
