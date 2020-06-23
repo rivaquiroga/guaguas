@@ -4,6 +4,7 @@ library(readxl)
 library(dplyr)
 library(stringr)
 library(lubridate)
+library(stringi)
 
 nombres <- read_xlsx("data-raw/nombres_registro_civil.xlsx") %>%
   rename(anio = AÑO, sexo = SEXO, nombre = NOMBRE, n = CANTIDAD) %>%
