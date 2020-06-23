@@ -13,16 +13,10 @@ status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://tr
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y
 2019, según el Servicio de Registro Civil e Identificación. Incluye
-todos los nombres con al menos 15 ocurrencias.
-
-El dataframe `guaguas` contiene cuatro variables: año de inscripción,
-sexo registral, nombre, número de ocurrencias del nombre y proporción
-del nombre respecto del total de inscripciones del año.
-
-Los datos contenidos en este paquete permiten explorar algunas
-tendencias en los nombres registrados en Chile durante el último siglo.
-Puede utilizarse también como dataset de práctica para enseñar/aprender
-R.
+todos los nombres con al menos 15 ocurrencias. Este *dataset* permite
+explorar algunas tendencias en los nombres registrados durante el último
+siglo y puede utilizarse también como datos de práctica para
+enseñar/aprender R.
 
 ## Instalación
 
@@ -31,12 +25,24 @@ R.
 devtools::install_github("rivaquiroga/guaguas")
 ```
 
+## Datos
+
+El dataframe `guaguas` contiene cuatro variables y un total de 84565
+observaciones:
+
+| variable     | descripción                                                       |
+| ------------ | ----------------------------------------------------------------- |
+| `anio`       | año de inscripción                                                |
+| `sexo`       | sexo registral                                                    |
+| `n`          | número de ocurrencias del nombre                                  |
+| `proporcion` | proporción del nombre respecto del total de inscripciones del año |
+
 ## Ejemplos
 
 A continuación se muestran algunos ejemplos de exploración de estos
 datos.
 
-### El contexto político en los años sesenta y setenta
+#### El contexto político en los años sesenta y setenta
 
 Los dos momentos en que aumentan las inscripciones con el nombre
 *Salvador* en los años sesenta y setenta coinciden con elecciones
@@ -54,19 +60,20 @@ library(stringr)
 library(ggplot2)
 library(forcats)
 library(hrbrthemes)
+library(ggthemes)
 
 guaguas %>% 
   filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
   ggplot(aes(anio, n, color = fct_reorder2(nombre, n, anio))) + 
   geom_line() +
-  theme_minimal() +
+  scale_color_colorblind() +
   labs(x = "año", y = "total inscripciones", color = "nombre") +
   theme_ipsum()
 ```
 
 <img src="man/figures/salvador-augusto.png">
 
-### El efecto “Romané” en el año 2000
+#### El efecto “Romané” en el año 2000
 
 Según [IMDB](https://www.imdb.com/list/ls006742360/),
 [Romané](https://es.wikipedia.org/wiki/Roman%C3%A9) ha sido una de las
@@ -94,14 +101,14 @@ guaguas %>%
   filter(nombre %in% c("Milenka", "Branco", "Salomé"), anio > 1980) %>% 
   ggplot(aes(anio, n, color = nombre)) + 
   geom_line() +
-  theme_minimal() +
+  scale_color_colorblind() +
   labs(x = "año", y = "total inscripciones") +
   theme_ipsum()
 ```
 
 <img src="man/figures/romane.png">
 
-### Ídolos musicales
+#### Ídolos musicales
 
 Alguno de los nombres de integrantes de los [Backstreet
 Boys](https://es.wikipedia.org/wiki/Backstreet_Boys) aumentaron hacia
@@ -114,7 +121,7 @@ guaguas %>%
   filter(nombre %in% c("Brian", "Kevin", "Bryan", "Brayan")) %>% 
   ggplot(aes(anio, n, color = fct_reorder2(nombre, anio, n))) +
   geom_line() +
-  theme_minimal() +
+  scale_color_colorblind() +
   labs(x = "año", y = "total inscripciones", color = "nombre") +
   theme_ipsum()
 ```
@@ -123,15 +130,10 @@ guaguas %>%
 
 <p align="center">
 
-<img src="man/figures/por-que-me-llamo-brian.JPG" width="400">
-
-</p>
-
-<p align="center">
-
-Un cartel visto durante la presentación de los Backstreet Boys en el
-Festival de Viña del Mar 2019 </br>Fuente de la imagen:
-<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a>
+<img src="man/figures/por-que-me-llamo-brian.JPG" width="300"><br> Un
+cartel visto durante la presentación de los Backstreet Boys en el
+Festival de Viña del Mar 2019</br>Fuente de la imagen:
+<a         href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a>
 
 </p>
 
