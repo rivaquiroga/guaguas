@@ -1,6 +1,6 @@
 Package: guaguas
-Title: Nombres de bebés registrados en Chile entre 1920 y 2019
-Version: 0.0.0.9000
+Title: Nombres de Bebés Registrados en Chile entre 1920 y 2019
+Version: 0.1.0
 Authors@R: 
     person(given = "Riva",
            family = "Quiroga",
