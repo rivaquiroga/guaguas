@@ -118,10 +118,8 @@ guaguas %>%
 <img src="man/figures/bsb.png">
 
 
-<p align="center">
-  <img src="man/figures/por-que-me-llamo-brian.JPG" width="300"><br>
-  Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar         2019</br>Fuente de la imagen: <a         href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">FMTiempo</a>
-</p>
+<p align="center"><img src="man/figures/por-que-me-llamo-brian.JPG" width="300"></p>
+<p align="center">Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019. Fuente:<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/"> FMTiempo</a></p>
 
 ## Fuente de los datos
 
