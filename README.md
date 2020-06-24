@@ -7,15 +7,14 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
-
 <!-- badges: end -->
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y
 2019, según el Servicio de Registro Civil e Identificación. Incluye
 todos los nombres con al menos 15 ocurrencias. Este *dataset* permite
-explorar algunas tendencias en los nombres registrados durante el último
-siglo y puede utilizarse también como datos de práctica para
-enseñar/aprender R.
+explorar tendencias en los nombres registrados durante el último siglo y
+puede utilizarse como fuente de datos de práctica para enseñar/aprender
+R.
 
 ## Instalación
 

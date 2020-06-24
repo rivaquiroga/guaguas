@@ -15,10 +15,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
-
 <!-- badges: end -->
 
-Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, según el Servicio de Registro Civil e Identificación. Incluye todos los nombres con al menos 15 ocurrencias. Este _dataset_ permite explorar algunas tendencias en los nombres registrados durante el último siglo y puede utilizarse también como datos de práctica para enseñar/aprender R. 
+Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, según el Servicio de Registro Civil e Identificación. Incluye todos los nombres con al menos 15 ocurrencias. Este _dataset_ permite explorar tendencias en los nombres registrados durante el último siglo y puede utilizarse como fuente de datos de práctica para enseñar/aprender R. 
 
 ## Instalación
 
@@ -48,7 +47,6 @@ library(guaguas)
 library(dplyr)
 library(ggplot2)
 library(stringr)
-library(gt)
 library(hrbrthemes)
 library(forcats)
 ```
