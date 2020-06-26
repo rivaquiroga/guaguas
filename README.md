@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# guaguas
+# guaguas <img src="man/figures/guaguas-hex.png" align="right" width = "120px"/>
 
 <!-- badges: start -->
 

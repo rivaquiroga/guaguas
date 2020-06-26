@@ -11,14 +11,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# guaguas
+# guaguas <img src="man/figures/guaguas-hex.png" align="right" width = "120px"/>
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
 [![Travis build status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
 <!-- badges: end -->
 
-Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, según el Servicio de Registro Civil e Identificación. Incluye todos los nombres con al menos 15 ocurrencias. Este _dataset_ permite explorar tendencias en los nombres registrados durante el último siglo y puede utilizarse como fuente de datos de práctica para enseñar/aprender R. 
+Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2019, según el Servicio de Registro Civil e Identificación. Incluye todos los nombres con al menos 15 ocurrencias. 
+Este _dataset_ permite explorar tendencias en los nombres registrados durante el último siglo y puede utilizarse como fuente de datos de práctica para enseñar/aprender R. 
 
 ## Instalación
 
@@ -128,6 +129,7 @@ guaguas %>%
 
 
 <p align="center"><img src="man/figures/por-que-me-llamo-brian.JPG" width="300"></p>
+
 <p align="center">Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019. Fuente:<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/"> FMTiempo</a></p>
 
 ## Fuente de los datos
