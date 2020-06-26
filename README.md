@@ -7,6 +7,8 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
+[![Travis build
+status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
 <!-- badges: end -->
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y
@@ -17,6 +19,14 @@ puede utilizarse como fuente de datos de práctica para enseñar/aprender
 R.
 
 ## Instalación
+
+El paquete `guaguas` puede instalarse directamente desde CRAN:
+
+``` r
+install.packages("guaguas")
+```
+
+La versión en desarrollo puede instalarse desde Github:
 
 ``` r
 # install.packages("devtools")
