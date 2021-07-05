@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
-[![Travis build
-status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
+[![R-CMD-check](https://github.com/rivaquiroga/guaguas/workflows/R-CMD-check/badge.svg)](https://github.com/rivaquiroga/guaguas/actions)
 <!-- badges: end -->
 
 Datos sobre nombres de guaguas (bebés) registrados en Chile entre 1920 y
