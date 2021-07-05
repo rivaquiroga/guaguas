@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.org/package=guaguas)
-[![Travis build
-status](https://travis-ci.com/rivaquiroga/guaguas.svg?branch=master)](https://travis-ci.com/rivaquiroga/guaguas)
+[![R-CMD-check](https://github.com/rivaquiroga/guaguas/workflows/R-CMD-check/badge.svg)](https://github.com/rivaquiroga/guaguas/actions)
 <!-- badges: end -->
 
 Datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y
@@ -39,7 +38,7 @@ El dataframe `guaguas` contiene cuatro variables y un total de 84565
 observaciones:
 
 | variable     | descripción                                                       |
-| ------------ | ----------------------------------------------------------------- |
+|--------------|-------------------------------------------------------------------|
 | `anio`       | año de inscripción                                                |
 | `sexo`       | sexo registral                                                    |
 | `n`          | número de ocurrencias del nombre                                  |
@@ -93,13 +92,20 @@ ocurrencias ese año.
 ``` r
 guaguas %>% 
   filter(str_detect(nombre, "(Y|J)ovanka"))
-#> # A tibble: 4 x 5
-#>    anio sexo  nombre      n proporcion
-#>   <dbl> <chr> <chr>   <int>      <dbl>
-#> 1  1963 F     Jovanka    17  0.0000597
-#> 2  1973 F     Yovanka    16  0.0000506
-#> 3  2000 F     Jovanka    30  0.000116 
-#> 4  2000 F     Yovanka    21  0.0000813
+#> # A tibble: 107 x 5
+#>     anio nombre  sexo      n proporcion
+#>    <dbl> <chr>   <chr> <dbl>      <dbl>
+#>  1  1937 Jovanka F         1 0.0000103 
+#>  2  1958 Jovanka F         1 0.00000397
+#>  3  1962 Jovanka F         5 0.0000177 
+#>  4  1962 Yovanka F         3 0.0000106 
+#>  5  1963 Jovanka F        17 0.0000595 
+#>  6  1963 Yovanka F         5 0.0000175 
+#>  7  1964 Yovanka F         9 0.0000310 
+#>  8  1964 Jovanka F         7 0.0000241 
+#>  9  1965 Yovanka F         5 0.0000157 
+#> 10  1965 Jovanka F         4 0.0000125 
+#> # … with 97 more rows
 ```
 
 También aumentaron las inscripciones de nombres de otros personajes de
@@ -140,18 +146,13 @@ guaguas %>%
 <img src="man/figures/bsb.png">
 
 <p align="center">
-
 <img src="man/figures/por-que-me-llamo-brian.JPG" width="300">
-
 </p>
-
 <p align="center">
-
 Un cartel visto durante la presentación de los Backstreet Boys en el
 Festival de Viña del Mar 2019.
 Fuente:<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/">
 FMTiempo</a>
-
 </p>
 
 ## Fuente de los datos
@@ -166,7 +167,7 @@ y algunos países de Sudamérica se utiliza para referirse a un/a bebé.
 
 ## Paquetes similares
 
-  - [`babynames`](https://github.com/hadley/babynames) (nombres
+-   [`babynames`](https://github.com/hadley/babynames) (nombres
     registrados en EE. UU.)
-  - [`prenoms`](https://github.com/ThinkR-open/prenoms) (nombres
+-   [`prenoms`](https://github.com/ThinkR-open/prenoms) (nombres
     registrados en Francia)
