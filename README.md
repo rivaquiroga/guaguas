@@ -25,7 +25,7 @@ El paquete `guaguas` puede instalarse directamente desde CRAN:
 install.packages("guaguas")
 ```
 
-La versión en desarrollo puede instalarse desde Github:
+La versión en desarrollo puede instalarse desde GitHub:
 
 ``` r
 # install.packages("devtools")
@@ -46,8 +46,8 @@ variables:
 | `proporcion` | proporción del nombre respecto del total de inscripciones del año |
 
 El dataframe `guaguas_frecuentes` contiene una muestra de 85463
-observaciones, que corresponden a los nombres con al menos 15
-ocurrencias por año.
+observaciones, que corresponde a los nombres con al menos 15 ocurrencias
+por año.
 
 ## Ejemplos
 
@@ -173,4 +173,4 @@ y algunos países de Sudamérica se utiliza para referirse a un/a bebé.
 -   [`prenoms`](https://github.com/ThinkR-open/prenoms): nombres
     registrados en Francia.
 -   [`ukbabynames`](https://github.com/mine-cetinkaya-rundel/ukbabynames):
-    nombres registrado en el Reino Unido.
+    nombres registrados en el Reino Unido.
