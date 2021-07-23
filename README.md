@@ -34,7 +34,7 @@ devtools::install_github("rivaquiroga/guaguas")
 
 ## Datos
 
-El dataframe `guaguas` contiene 845400 observaciones para cinco
+El dataframe `guaguas` contiene 845358 observaciones para cinco
 variables:
 
 | variable     | descripción                                                       |
