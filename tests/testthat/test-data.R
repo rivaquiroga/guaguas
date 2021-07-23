@@ -1,7 +1,7 @@
 # guaguas
 
 test_that("guaguas nrow matches docs", {
-  expect_equal(845400, nrow(guaguas))
+  expect_equal(845358, nrow(guaguas))
 })
 
 test_that("guaguas years don't go below 1920", {
