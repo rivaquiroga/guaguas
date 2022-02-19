@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,18 +36,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">guaguas</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rivaquiroga/guaguas/">
+  <a href="https://github.com/rivaquiroga/guaguas/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,27 +68,26 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="guaguas-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#guaguas-" class="anchor"></a>guaguas <img src="reference/figures/guaguas-hex.png" align="right" width="120px">
+<div class="section level1">
+<div class="page-header"><h1 id="guaguas-">guaguas <img src="reference/figures/guaguas-hex.png" align="right" width="120px"><a class="anchor" aria-label="anchor" href="#guaguas-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>Datos sobre nombres de guaguas (bebés) registrados en Chile entre 1920 y 2020, según el Servicio de Registro Civil e Identificación. Incluye solo los que fueron inscritos como primer nombre. Este <em>dataset</em> permite explorar tendencias en los nombres registrados durante el último siglo y puede utilizarse como fuente de ejemplos para aprender/enseñar a trabajar con datos.</p>
-<div id="instalación" class="section level2">
-<h2 class="hasAnchor">
-<a href="#instalaci%C3%B3n" class="anchor"></a>Instalación</h2>
+<div class="section level2">
+<h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
+</h2>
 <p>El paquete <code>guaguas</code> puede instalarse directamente desde CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"guaguas"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"guaguas"</span><span class="op">)</span></code></pre></div>
 <p>La versión en desarrollo puede instalarse desde GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rivaquiroga/guaguas"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="datos" class="section level2">
-<h2 class="hasAnchor">
-<a href="#datos" class="anchor"></a>Datos</h2>
+<div class="section level2">
+<h2 id="datos">Datos<a class="anchor" aria-label="anchor" href="#datos"></a>
+</h2>
 <p>El dataframe <code>guaguas</code> contiene 845358 observaciones para cinco variables:</p>
 <table class="table">
 <colgroup>
@@ -128,25 +123,25 @@
 </table>
 <p>El dataframe <code>guaguas_frecuentes</code> contiene una muestra de 85463 observaciones, que corresponde a los nombres con al menos 15 ocurrencias por año.</p>
 </div>
-<div id="ejemplos" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ejemplos" class="anchor"></a>Ejemplos</h2>
+<div class="section level2">
+<h2 id="ejemplos">Ejemplos<a class="anchor" aria-label="anchor" href="#ejemplos"></a>
+</h2>
 <p>A continuación se muestran algunos ejemplos de exploración de estos datos.</p>
-<div id="el-contexto-político-en-los-años-sesenta-y-setenta" class="section level4">
-<h4 class="hasAnchor">
-<a href="#el-contexto-pol%C3%ADtico-en-los-a%C3%B1os-sesenta-y-setenta" class="anchor"></a>El contexto político en los años sesenta y setenta</h4>
+<div class="section level4">
+<h4 id="el-contexto-político-en-los-años-sesenta-y-setenta">El contexto político en los años sesenta y setenta<a class="anchor" aria-label="anchor" href="#el-contexto-pol%C3%ADtico-en-los-a%C3%B1os-sesenta-y-setenta"></a>
+</h4>
 <p>Los dos momentos en que aumentan las inscripciones con el nombre <em>Salvador</em> en los años sesenta y setenta coinciden con elecciones presidenciales en las que se presentó Salvador Allende como candidato (1964, 1970). El año siguiente de su elección como presidente (1971) es el año con mayor cantidad de inscripciones en esas décadas. Luego del Golpe Militar los registros comienzan a bajar y encuentran su punto más bajo en 1978. El nombre <em>Augusto</em>, por su parte, sube en los registros en 1973 y 1974, pero luego su popularidad baja.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rivaquiroga/guaguas">guaguas</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">forcats</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hrbrthemes</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggthemes</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rivaquiroga/guaguas" class="external-link">guaguas</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org" class="external-link">forcats</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/hrbrmstr/hrbrthemes" class="external-link">hrbrthemes</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes" class="external-link">ggthemes</a></span><span class="op">)</span>
 
-<span class="va">guaguas</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Salvador"</span>, <span class="st">"Augusto"</span><span class="op">)</span>, <span class="va">anio</span> <span class="op">&gt;=</span> <span class="fl">1960</span> <span class="op">&amp;</span> <span class="va">anio</span> <span class="op">&lt;=</span> <span class="fl">1979</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">guaguas</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Salvador"</span>, <span class="st">"Augusto"</span><span class="op">)</span>, <span class="va">anio</span> <span class="op">&gt;=</span> <span class="fl">1960</span> <span class="op">&amp;</span> <span class="va">anio</span> <span class="op">&lt;=</span> <span class="fl">1979</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">anio</span>, <span class="va">n</span>, color <span class="op">=</span> <span class="fu">fct_reorder2</span><span class="op">(</span><span class="va">nombre</span>, <span class="va">n</span>, <span class="va">anio</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_colorblind</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -155,13 +150,13 @@
   <span class="fu">theme_ipsum</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/salvador-augusto.png"></p>
 </div>
-<div id="el-efecto-romané-en-el-año-2000" class="section level4">
-<h4 class="hasAnchor">
-<a href="#el-efecto-roman%C3%A9-en-el-a%C3%B1o-2000" class="anchor"></a>El efecto “Romané” en el año 2000</h4>
-<p>Según <a href="https://www.imdb.com/list/ls006742360/">IMDB</a>, <a href="https://es.wikipedia.org/wiki/Roman%C3%A9">Romané</a> ha sido una de las teleseries más vistas en Chile. Emitida el año 2000, el nombre de su protagonista tiene un incremento en las inscripciones de ese año.</p>
+<div class="section level4">
+<h4 id="el-efecto-romané-en-el-año-2000">El efecto “Romané” en el año 2000<a class="anchor" aria-label="anchor" href="#el-efecto-roman%C3%A9-en-el-a%C3%B1o-2000"></a>
+</h4>
+<p>Según <a href="https://www.imdb.com/list/ls006742360/" class="external-link">IMDB</a>, <a href="https://es.wikipedia.org/wiki/Roman%C3%A9" class="external-link">Romané</a> ha sido una de las teleseries más vistas en Chile. Emitida el año 2000, el nombre de su protagonista tiene un incremento en las inscripciones de ese año.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">guaguas</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="st">"(Y|J)ovanka"</span><span class="op">)</span>, <span class="va">n</span> <span class="op">&gt;=</span> <span class="fl">10</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">guaguas</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="st">"(Y|J)ovanka"</span><span class="op">)</span>, <span class="va">n</span> <span class="op">&gt;=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 8 x 5</span>
 <span class="co">#&gt;    anio nombre  sexo      n proporcion</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
@@ -175,8 +170,8 @@
 <span class="co">#&gt; 8  2001 Yovanka F        11  0.0000437</span></code></pre></div>
 <p>También aumentaron las inscripciones de nombres de otros personajes de la teleserie:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">guaguas</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Milenka"</span>, <span class="st">"Branco"</span>, <span class="st">"Salomé"</span><span class="op">)</span>, <span class="va">anio</span> <span class="op">&gt;</span> <span class="fl">1980</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">guaguas</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Milenka"</span>, <span class="st">"Branco"</span>, <span class="st">"Salomé"</span><span class="op">)</span>, <span class="va">anio</span> <span class="op">&gt;</span> <span class="fl">1980</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">anio</span>, <span class="va">n</span>, color <span class="op">=</span> <span class="va">nombre</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_colorblind</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -185,13 +180,13 @@
   <span class="fu">theme_ipsum</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/romane.png"></p>
 </div>
-<div id="el-efecto-backstreet-boys" class="section level4">
-<h4 class="hasAnchor">
-<a href="#el-efecto-backstreet-boys" class="anchor"></a>El efecto Backstreet Boys</h4>
-<p>Alguno de los nombres de integrantes de los <a href="https://es.wikipedia.org/wiki/Backstreet_Boys">Backstreet Boys</a> aumentaron hacia fines de la década de los noventa. Como suele ocurrir con nombres en inglés, es posible encontrar variaciones en la forma de escribirlos: <em>Brian</em>, <em>Bryan</em>, <em>Brayan</em>.</p>
+<div class="section level4">
+<h4 id="el-efecto-backstreet-boys">El efecto Backstreet Boys<a class="anchor" aria-label="anchor" href="#el-efecto-backstreet-boys"></a>
+</h4>
+<p>Alguno de los nombres de integrantes de los <a href="https://es.wikipedia.org/wiki/Backstreet_Boys" class="external-link">Backstreet Boys</a> aumentaron hacia fines de la década de los noventa. Como suele ocurrir con nombres en inglés, es posible encontrar variaciones en la forma de escribirlos: <em>Brian</em>, <em>Bryan</em>, <em>Brayan</em>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">guaguas</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brian"</span>, <span class="st">"Kevin"</span>, <span class="st">"Bryan"</span>, <span class="st">"Brayan"</span><span class="op">)</span>, <span class="va">sexo</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">guaguas</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Brian"</span>, <span class="st">"Kevin"</span>, <span class="st">"Bryan"</span>, <span class="st">"Brayan"</span><span class="op">)</span>, <span class="va">sexo</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">anio</span>, <span class="va">n</span>, color <span class="op">=</span> <span class="fu">fct_reorder2</span><span class="op">(</span><span class="va">nombre</span>, <span class="va">anio</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_colorblind</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -202,30 +197,30 @@
 <p align="center">
 <img src="reference/figures/por-que-me-llamo-brian.JPG" width="300"></p>
 <p align="center">
-Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019. Fuente:<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/"> FMTiempo</a>
+Un cartel visto durante la presentación de los Backstreet Boys en el Festival de Viña del Mar 2019. Fuente:<a href="https://www.fmtiempo.cl/tendencias/galeria-los-mejores-carteles-que-dejo-el-paso-de-los-backstreet-boys-en-vina/" class="external-link"> FMTiempo</a>
 </p>
 </div>
 </div>
-<div id="fuente-de-los-datos" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fuente-de-los-datos" class="anchor"></a>Fuente de los datos</h2>
+<div class="section level2">
+<h2 id="fuente-de-los-datos">Fuente de los datos<a class="anchor" aria-label="anchor" href="#fuente-de-los-datos"></a>
+</h2>
 <p>Los datos fueron obtenidos a través del Portal de Transparencia del Sistema de Registro Civil e Identificación de Chile.</p>
 </div>
-<div id="etimología" class="section level2">
-<h2 class="hasAnchor">
-<a href="#etimolog%C3%ADa" class="anchor"></a>Etimología</h2>
+<div class="section level2">
+<h2 id="etimología">Etimología<a class="anchor" aria-label="anchor" href="#etimolog%C3%ADa"></a>
+</h2>
 <p>La palabra <em>guagua</em> viene del quechua <em>wawa</em> y es la forma que en Chile y algunos países de Sudamérica se utiliza para referirse a un/a bebé.</p>
 </div>
-<div id="paquetes-similares" class="section level2">
-<h2 class="hasAnchor">
-<a href="#paquetes-similares" class="anchor"></a>Paquetes similares</h2>
+<div class="section level2">
+<h2 id="paquetes-similares">Paquetes similares<a class="anchor" aria-label="anchor" href="#paquetes-similares"></a>
+</h2>
 <ul>
 <li>
-<a href="https://github.com/hadley/babynames"><code>babynames</code></a>: nombres registrados en EE. UU.</li>
+<a href="https://github.com/hadley/babynames" class="external-link"><code>babynames</code></a>: nombres registrados en EE. UU.</li>
 <li>
-<a href="https://github.com/ThinkR-open/prenoms"><code>prenoms</code></a>: nombres registrados en Francia.</li>
+<a href="https://github.com/ThinkR-open/prenoms" class="external-link"><code>prenoms</code></a>: nombres registrados en Francia.</li>
 <li>
-<a href="https://github.com/mine-cetinkaya-rundel/ukbabynames"><code>ukbabynames</code></a>: nombres registrados en el Reino Unido.</li>
+<a href="https://github.com/mine-cetinkaya-rundel/ukbabynames" class="external-link"><code>ukbabynames</code></a>: nombres registrados en el Reino Unido.</li>
 </ul>
 </div>
 </div>
@@ -233,47 +228,57 @@ Un cartel visto durante la presentación de los Backstreet Boys en el Festival d
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=guaguas">https://​cloud.r-project.org/​package=guaguas</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/rivaquiroga/guaguas/">https://​github.com/​rivaquiroga/​guaguas/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/rivaquiroga/guaguas/issues">https://​github.com/​rivaquiroga/​guaguas/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=guaguas" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/rivaquiroga/guaguas/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/rivaquiroga/guaguas/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>CC0</small></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Riva Quiroga <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1147-4135" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing guaguas</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=guaguas"><img src="https://www.r-pkg.org/badges/version/guaguas" alt="CRAN status"></a></li>
-<li><a href="https://github.com/rivaquiroga/guaguas/actions"><img src="https://github.com/rivaquiroga/guaguas/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li>Riva Quiroga <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1147-4135" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=guaguas" class="external-link"><img src="https://www.r-pkg.org/badges/version/guaguas" alt="CRAN status"></a></li>
+<li><a href="https://github.com/rivaquiroga/guaguas/actions" class="external-link"><img src="https://github.com/rivaquiroga/guaguas/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Riva Quiroga.</p>
+  <p></p>
+<p>Developed by Riva Quiroga.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -281,6 +286,8 @@ Un cartel visto durante la presentación de los Backstreet Boys en el Festival d
 
   
 
+
+  
 
   </body>
 </html>
