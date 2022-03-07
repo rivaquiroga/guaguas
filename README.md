@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/guaguas)](https://CRAN.R-project.or
 <!-- badges: end -->
 
 Datos sobre nombres de guaguas (bebés) registrados en Chile entre 1920 y
-2020, según el Servicio de Registro Civil e Identificación. Incluye solo
+2021, según el Servicio de Registro Civil e Identificación. Incluye solo
 los que fueron inscritos como primer nombre. Este *dataset* permite
 explorar tendencias en los nombres registrados durante el último siglo y
 puede utilizarse como fuente de ejemplos para aprender/enseñar a
@@ -34,18 +34,18 @@ devtools::install_github("rivaquiroga/guaguas")
 
 ## Datos
 
-El dataframe `guaguas` contiene 845358 observaciones para cinco
+El dataframe `guaguas` contiene 858782 observaciones para cinco
 variables:
 
 | variable     | descripción                                                       |
 |--------------|-------------------------------------------------------------------|
 | `anio`       | año de inscripción                                                |
 | `nombre`     | el nombre inscrito                                                |
-| `sexo`       | sexo registral                                                    |
+| `sexo`       | sexo registral (F, M, I)                                          |
 | `n`          | número de ocurrencias del nombre                                  |
 | `proporcion` | proporción del nombre respecto del total de inscripciones del año |
 
-El dataframe `guaguas_frecuentes` contiene una muestra de 85463
+El dataframe `guaguas_frecuentes` contiene una muestra de 86366
 observaciones, que corresponde a los nombres con al menos 15 ocurrencias
 por año.
 
@@ -96,14 +96,14 @@ protagonista tiene un incremento en las inscripciones de ese año.
 ``` r
 guaguas %>% 
   filter(str_detect(nombre, "(Y|J)ovanka"), n >= 10)
-#> # A tibble: 8 x 5
+#> # A tibble: 8 × 5
 #>    anio nombre  sexo      n proporcion
 #>   <dbl> <chr>   <chr> <dbl>      <dbl>
 #> 1  1963 Jovanka F        17  0.0000595
 #> 2  1973 Yovanka F        16  0.0000507
 #> 3  1974 Yovanka F        10  0.0000326
 #> 4  1992 Yovanka F        11  0.0000371
-#> 5  1993 Yovanka F        10  0.0000341
+#> 5  1993 Yovanka F        10  0.0000342
 #> 6  2000 Jovanka F        30  0.000118 
 #> 7  2000 Yovanka F        21  0.0000828
 #> 8  2001 Yovanka F        11  0.0000437

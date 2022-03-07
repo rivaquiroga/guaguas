@@ -1,7 +1,6 @@
 
-guaguas <- readr::read_csv("data-raw/1920-2020.csv")
-
-
+guaguas <- readr::read_csv("data-raw/1920-2021.csv") %>%
+  dplyr::arrange(anio, desc(n))
 
 guaguas_frecuentes <- guaguas %>%
   dplyr::filter(n >= 15)
