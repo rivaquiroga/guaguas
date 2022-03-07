@@ -1,6 +1,6 @@
 ## Test environments
-* ubuntu 18.04 (local), R 4.0.2
-* ubuntu-gcc-devel (rhub)
+* ubuntu 18.04 (local), R 4.1.2
+* ubuntu-gcc-release (rhub)
 * fedora-clang-devel (rhub)
 * windows-x86_64-devel (rhub)
 * macos-highsierra-release-cran (rhub)
@@ -10,4 +10,5 @@
 
 0 errors | 0 warnings | 0 notes
 
-* This is a package intended for Spanish speaking users
+* This is a data package intended for Spanish speaking users
+* This update adds data from 2021
