@@ -1,0 +1,86 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.2.1
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+
+cff-version: 1.2.0
+message: 'To cite package "guaguas" in publications use:'
+type: software
+license: CC0-1.0
+title: 'guaguas: Nombres Inscritos en Chile (1920 - 2021)'
+version: 0.3.0
+abstract: 'Datos de nombres inscritos en Chile entre 1920 y 2021, de acuerdo al Servicio
+  de Registro Civil. English: Chilean baby names registered from 1920 to 2021 by the
+  Civil Registry Service.'
+authors:
+- family-names: Quiroga
+  given-names: Riva
+  email: riva.quiroga@uc.cl
+  orcid: https://orcid.org/0000-0002-1147-4135
+preferred-citation:
+  type: data
+  title: 'guaguas: Nombres Inscritos en Chile (1920 - 2021)'
+  authors:
+  - family-names: Quiroga
+    given-names: Riva
+    email: riva.quiroga@uc.cl
+    orcid: https://orcid.org/0000-0002-1147-4135
+  version: 0.3.0
+  abstract: 'Datos de nombres inscritos en Chile entre 1920 y 2021, de acuerdo al
+    Servicio de Registro Civil. English: Chilean baby names registered from 1920 to
+    2021 by the Civil Registry Service.'
+  repository: https://CRAN.R-project.org/package=guaguas
+  repository-code: https://github.com/rivaquiroga/guaguas
+  url: https://github.com/rivaquiroga/guaguas
+  contact:
+  - family-names: Quiroga
+    given-names: Riva
+    email: riva.quiroga@uc.cl
+    orcid: https://orcid.org/0000-0002-1147-4135
+  license: CC0-1.0
+  year: '2022'
+repository: https://CRAN.R-project.org/package=guaguas
+repository-code: https://github.com/rivaquiroga/guaguas
+url: https://github.com/rivaquiroga/guaguas
+contact:
+- family-names: Quiroga
+  given-names: Riva
+  email: riva.quiroga@uc.cl
+  orcid: https://orcid.org/0000-0002-1147-4135
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+  version: '>= 2.10'
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=testthat
+  version: '>= 3.0.0'
+- type: software
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Suggests
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=tibble

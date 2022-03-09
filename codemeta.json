@@ -1,0 +1,78 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "guaguas",
+  "description": "Datos de nombres inscritos en Chile entre 1920 y 2021, de acuerdo al Servicio de Registro Civil. English: Chilean baby names registered from 1920 to 2021 by the Civil Registry Service.",
+  "name": "guaguas: Nombres Inscritos en Chile (1920 - 2021)",
+  "codeRepository": "https://github.com/rivaquiroga/guaguas",
+  "issueTracker": "https://github.com/rivaquiroga/guaguas/issues",
+  "license": "https://spdx.org/licenses/CC0-1.0",
+  "version": "0.3.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Riva",
+      "familyName": "Quiroga",
+      "email": "riva.quiroga@uc.cl",
+      "@id": "https://orcid.org/0000-0002-1147-4135"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Riva",
+      "familyName": "Quiroga",
+      "email": "riva.quiroga@uc.cl",
+      "@id": "https://orcid.org/0000-0002-1147-4135"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 2.10"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "4303.794KB"
+}

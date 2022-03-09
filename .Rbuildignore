@@ -6,3 +6,5 @@
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^\.github$
+^CITATION\.cff$
+^codemeta\.json$
